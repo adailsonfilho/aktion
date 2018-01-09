@@ -1,0 +1,9 @@
+{
+  "execution_id": "naive_test",
+  "actions":[
+      {"name" : "printa", "arguments" :{ "times": 2}},
+      {"name" : "printb", "arguments" :{ "times": 5}},
+      {"name" : "printa", "arguments" :{ "times": 3}},
+      {"name" : "register_people", "arguments" :{}}
+  ]
+}
