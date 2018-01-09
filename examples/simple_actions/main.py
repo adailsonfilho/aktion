@@ -1,18 +1,7 @@
-"""
-Description: Software that analysis videos footage and generate reports about people emotions
-Autnhor: Adailson de Castro Queiroz Filho
-Creation Date: 2018 Jan 5
-"""
-
-# Register people
-# > Description:
-# > Features:
-# > - add people in batch
-# > - update people face record
-
 import actions.action
 from executor import ExecutionPlan
 from actions import ActionFactory
+
 
 # A class that prints A 'x' times
 class PrintA(actions.action.Action):
