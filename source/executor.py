@@ -32,7 +32,11 @@ class ExecutionPlan:
     ARGUMENTS = 'arguments'
 
     def __init__(self, file):
-        assert os.path.isfile(file)
+        if not os.path.isabs(file):
+            file = os.path.join(os.getcwd(), file)
+
+        if not os.path.isfile(file):
+            raise FileNotFoundError(file)
 
         with open(file, 'r') as plan_text:
             plan = json.loads(plan_text.read())
@@ -41,5 +45,5 @@ class ExecutionPlan:
 
     def run(self):
         for action_config in self.actions:
-            action = ActionFactory.create(action_config[ExecutionPlan.NAME])
+            action = ActionFactory().create(action_config[ExecutionPlan.NAME])
             action.act(**action_config[ExecutionPlan.ARGUMENTS])

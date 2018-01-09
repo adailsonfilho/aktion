@@ -1,14 +1,16 @@
-from . import printters, registerpeople
-
-
 class ActionFactory:
 
-    actions = {
-        'printa': printters.PrintA,
-        'printb': printters.PrintB,
-        'register_people': registerpeople.RegisterPeople,
-    }
+    __actions = None
+    __instance = None
 
-    @staticmethod
-    def create(name):
-        return ActionFactory.actions[name]()
+    def __new__(cls):
+        if ActionFactory.__instance is None:
+            ActionFactory.__instance = object.__new__(cls)
+            ActionFactory.__actions = {}
+        return ActionFactory.__instance
+
+    def create(self, name):
+        return ActionFactory.__instance.__actions[name]()
+
+    def register(self, classDef):
+        ActionFactory.__actions[str(classDef.__name__).lower()] = classDef

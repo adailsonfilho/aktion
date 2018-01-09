@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class Action(ABC):
 
-    def __init__(self, ):
+    def __init__(self):
         ABC.__init__(self)
 
     @abstractmethod
