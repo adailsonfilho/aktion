@@ -1,10 +1,10 @@
-import actions.action
+from actions.aktion import Aktion
 from executor import ExecutionPlan
 from actions import ActionFactory
 
 
 # A class that prints A 'x' times
-class PrintA(actions.action.Action):
+class PrintA(Aktion):
 
     def __init__(self):
         super().__init__()
@@ -14,10 +14,11 @@ class PrintA(actions.action.Action):
 
 
 # A class that prints B 'x' times
-class PrintB(actions.action.Action):
+class PrintB(Aktion):
 
     def __init__(self):
         super().__init__()
+        self.retryin = []
 
     def __act__(self, times):
         print("B".join(['' for i in range(times+1)]))
@@ -29,5 +30,6 @@ if __name__ == "__main__":
     factory.register(PrintA)
     factory.register(PrintB)
 
-    plan = ExecutionPlan(r"examples\simple_actions\exec_naive_test.json")
+    plan = ExecutionPlan("simple_actions.json")
+
     plan.run()

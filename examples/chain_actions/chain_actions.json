@@ -1,0 +1,9 @@
+{
+  "execution_id": "naive_test",
+  "actions":[
+      {"name" : "generatea", "arguments" :{ "times": 2}, "output_id":"printa_call1"},
+      {"name" : "generateb", "arguments" :{ "times": 5}, "output_id":"printb_call1"},
+      {"name" : "generatea", "arguments" :{ "times": 3}, "output_id":"printa_call2"},
+      {"name" : "concatsrt", "dynamic_arguments": {"items": ["printa_call1", "printb_call1", "printa_call2"], "times":3}}
+  ]
+}
