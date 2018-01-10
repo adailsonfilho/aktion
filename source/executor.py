@@ -2,8 +2,9 @@ import collections
 import json
 import os
 
-from actions.aktion import Aktion
-from actions import ActionFactory
+from . actions.aktion import Aktion
+from . actions import ActionFactory
+
 
 class Executor:
 
@@ -34,6 +35,10 @@ class ExecutionPlan:
     DYNAMIC_ARGUMENTS= 'DYNAMIC_ARGUMENTS'.lower()
 
     def __init__(self, file):
+
+        for cls in Aktion.__subclasses__():
+            ActionFactory().register(cls)
+
         if not os.path.isabs(file):
             file = os.path.join(os.getcwd(), file)
 
