@@ -1,2 +1,4 @@
 # aktion
-An action based project template skeleton for pipelines processing.
+A pipeline framework module based on inheritance and json config file.
+
+[TODO: SHOW a simple example]
